@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+from params import *
 
 app = FastAPI()
 
@@ -8,6 +9,6 @@ async def root():
 
 
 @app.post("/form_receiver")
-async def form_receiver():
-	return {"title":'hi', "author":'iii'}
+async def form_receiver(params: Params):
+	return params
 

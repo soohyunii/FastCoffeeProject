@@ -1,44 +1,24 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
-  <div id="contents">
-    <input type="text" placeholder="title" v-model="title">
-    <input type="text" placeholder="author" v-model="author">
-    <button type="submit" @click="formSubmit()">submit</button>
-    <input type="text" placeholder="output" v-model="output">
-  </div>
+  <img alt="Vue logo" src="./assets/coffee_bean.png">
+  <HelloWorld msg="커피원두 주문하기"/>
+  <OrderList></OrderList>
 </template>
 
 <script>
 import HelloWorld from './components/HelloWorld.vue'
-import axios from 'axios'
+import OrderList from './components/OrderList.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    HelloWorld,
+    OrderList
   },
   data() {
     return {
       title:'',
       author:'',
       output:''
-    }
-  },
-  methods: {
-    formSubmit () {
-      axios.post('/form_receiver', {
-        title: this.title,
-        author: this.author
-      })
-      .then((response) => {
-        this.output = response.data
-        this.title = ''
-        this.author = ''
-      })
-      .catch((error) => {
-        this.output = error
-      })
     }
   }
 }
